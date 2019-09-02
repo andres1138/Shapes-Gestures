@@ -9,12 +9,18 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTap))
+        self.view.addGestureRecognizer(tapGesture)
     }
-
-
+  
+  
+    
+    @objc func didTap(tapGesture: UITapGestureRecognizer) {
+        let tapPoint = tapGesture.location(in: self.view)
+        let shapeView = ShapeView(origin: tapPoint)
+        self.view.addSubview(shapeView)
+    }
 }
 
